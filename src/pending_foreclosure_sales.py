@@ -17,9 +17,6 @@ def get_todays_date():
     return datetime.strptime(formatted_todays_date, '%m/%d/%Y')
 
 
-print('Today\'s Date', get_todays_date())
-
-
 cities = ['New Milford','Trumbull', 'Norwalk','Stamford', 'Shelton', 'Fairfield']
 
 for city in cities:
@@ -44,10 +41,8 @@ for city in cities:
             else:
                 print('Sale is NOT within 7 days')
                 href = notice_links[notice].get_attribute('href')
-                driver.execute_script("window.")
-                ActionChains(driver).key_down(Keys.CONTROL).send_keys('n').key_up(Keys.CONTROL).perform()
-                driver.switch_to.window(driver.window_handles[-1])
-                driver.get(href)
+                driver.execute_script("window.open('"+href+"');")
+                driver.switch_to.window(driver.window_handles[0])
                 #driver.execute_script("window.open('"+href+"');")
                 driver.switch_to.window(driver.window_handles[0])
 
